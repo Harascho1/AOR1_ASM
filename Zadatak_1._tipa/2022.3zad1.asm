@@ -1,4 +1,4 @@
-
+w
 ;ZADATAK
 ;Za ulazne podatke x,y,z (svi 32b neoznaceni brojevi) izracunava nove vrednosti X i Y
 ;po obrascima
