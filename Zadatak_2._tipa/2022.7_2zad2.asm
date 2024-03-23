@@ -58,11 +58,10 @@ main proc
             jne kraj
             mov eax, [esi] ;smesti vrednost koju treba da menja nazad u eax
             mov [esi], edi ;menjaju vrednosti
-            mov [esi+edx], eax;menjaju vrednosti
             kraj:
                 add esi, 4
                 loop unutrasnji
-        
+        mov ecx, ebx
         loop spoljni
 
 
