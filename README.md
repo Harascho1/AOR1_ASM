@@ -1,9 +1,10 @@
+Ne kontam aprilski zadatak iz 2024.
 
 ## Zadatak 1. : obican zadatak
 > dd->32b , dw->16b, db->b
 
 >Registi koje mozes da koristis:
-eax, ebx, ecx, edx, esi, edi, eip, ebp
+eax, ebx, ecx, edx, esi, edi, ebp
 ## Zadatak 2. : zadatak sa procedurama
 > postoje dva tipa zadataka sa procedurama:
  - preko steka
