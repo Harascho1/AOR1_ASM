@@ -8,80 +8,90 @@
 		12, 13, 14, 15
 	N dd 4
 	M dd 4
+
 .stack 4096	
 
 .code
+
 fja proc
-	add eax,ebx
+	add ecx,edx
 	ret
 fja endp
 
 main proc
-	;ecx -> N, M
-	;esi -> za prolaz kroz elemente
-	;edi -> brojac
+	;esi -> j
+	;edi -> i
+	;ebp -> pomeraj u matrici
 
-	;inicijalizacija
-	mov ebp, M
-	shl ebp, 2
-	sub ebp, 4
+	;smanjivanje N sa 2
+	;zato sto necu da radim sa prvim i poslednjim redom
+	dec N
 
-	mov edi, M
-	shl edi, 2
-	add edi, 4
-
-
-	mov ecx, M
-	sub ecx, 2
-	mov M, ecx
-	mov ecx, N
-	sub ecx, 2
-	lea esi, MAT
+	;velicina svake vrste
+	;cuva se u ebp
 	
 
-	
+	;incijalizacija
+	mov edi,1
 
-	po_vrstama:
-		mov N, ecx
-		mov ecx, M
+	poVrstama:
+		
 
-		po_kolonama:
-			xor edx,edx
-			;edi % (n*m - 4) == 0
-			;then skoci na kraj
+		mov esi,0
+		poKolonama:
+			cmp esi,0
+			je krajKolone
+			test esi,1
+			jz krajKolone
+			mov eax,esi
+			inc eax
+			cmp eax,M
+			je krajKolone
+
+			;priprema VRSTE
+			mov ebp, M
+			shl ebp, 2
+			;priprema Kolone
+			mov ebx, esi
+			shl ebx, 2
+			
 			mov eax, edi
-			div ebp
-			cmp edi, edx
-			je kraj
-
-			xor edx,edx
-			mov eax,edi
-			sub eax,4
-			mov eax,[esi+eax]
-			mov ebx,edi
-			add ebx,4
-			mov ebx,[esi+ebx]
+			dec eax
+			mul ebp
+			add eax,ebx
+			mov ecx,[MAT + eax]
+			mov eax, edi
+			inc eax
+			mul ebp
+			add eax,ebx
+			mov edx,[MAT + eax]
 			call fja
-			mov edx,eax
 
-
-			;ne treba da bude 16 vec 4 * m
+			;vracanje u pocetnu vrstu
 			mov eax,edi
-			sub eax,16
-			mov eax,[esi+eax]
-			mov ebx,edi
-			add ebx,16
-			mov ebx,[esi+ebx]
+			mul ebp
+			add eax,ebx
+
+			mov ebp, ecx
+			mov ecx,[MAT + eax - 4]
+			mov edx,[MAT + eax + 4]
+
 			call fja
-			add edx,eax
-			mov [MAT + edi], edx
+			add ebp,ecx
+			mov [MAT + eax], ebp
 
-			ne_zadovoljava:
-			add edi, 8
-			loop po_kolonama
-		kraj:
-		mov ecx, N
-		loop po_vrstama
 
+			
+
+			krajKolone:
+			inc esi
+			cmp esi,M
+			jl poKolonama
+
+		inc edi
+		cmp edi,N
+		jl poVrstama
+
+	ret
 main endp
 end main
