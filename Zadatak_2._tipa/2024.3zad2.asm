@@ -15,6 +15,7 @@
 
 fja proc
 	add ecx,edx
+	mov [MAT+eax],ecx
 	ret
 fja endp
 
@@ -65,23 +66,14 @@ main proc
 			mul ebp
 			add eax,ebx
 			mov edx,[MAT + eax]
+			sub eax,ebp
 			call fja
 
-			;vracanje u pocetnu vrstu
-			mov eax,edi
-			mul ebp
-			add eax,ebx
+			mov edx,[MAT + eax - 4]
+			call fja
 
-			mov ebp, ecx
-			mov ecx,[MAT + eax - 4]
 			mov edx,[MAT + eax + 4]
-
 			call fja
-			add ebp,ecx
-			mov [MAT + eax], ebp
-
-
-			
 
 			krajKolone:
 			inc esi
