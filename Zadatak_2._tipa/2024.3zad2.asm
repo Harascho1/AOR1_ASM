@@ -61,10 +61,8 @@ main proc
 			mul ebp
 			add eax,ebx
 			mov ecx,[MAT + eax]
-			mov eax, edi
-			inc eax
-			mul ebp
-			add eax,ebx
+			add eax,ebp
+			add eax,ebp
 			mov edx,[MAT + eax]
 			sub eax,ebp
 			call fja
