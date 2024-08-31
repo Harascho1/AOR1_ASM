@@ -1,6 +1,6 @@
 ## Tipovi podataka:
-> db se koristi za za slova i u zadacima sa recima i recinicama
-> dd->32b , dw->16b, db->8b
+- db se koristi za za slova i u zadacima sa recima i recinicama
+- dd->32b , dw->16b, db->8b
 ## Zadatak 1. : obican zadatak
 > Registi koje mozes da koristis:
 eax, ebx, ecx, edx, esi, edi, ebp
