@@ -1,8 +1,9 @@
 ## Tipovi podataka:
 - db se koristi za za slova i u zadacima sa recima i recinicama
 - dd->32b , dw->16b, db->8b
+- rad sa recima i slovima ne mora da se prevodi u ascii vrednost pri smestanju u neki registar ili mem. prostor
 ## Zadatak 1. : obican zadatak
-> Registi koje mozes da koristis:
+- Registi koje mozes da koristis:
 eax, ebx, ecx, edx, esi, edi, ebp
 ## Zadatak 2. : zadatak sa procedurama
 > postoje dva tipa zadataka sa procedurama:
